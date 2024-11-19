@@ -1,6 +1,13 @@
 <?php
+session_start();
 
-include "db_connection.php";
+include "database/db_connection.php";
+require "jwt_helper.php";
+
+if(!isset($_SESSION['jwt']) || !decodeJWT($_SESSION['jwt'])){
+    header('Location: /pages/auth/login_form.php');
+    exit;
+}
 
 $db = database_connect();
 
@@ -42,7 +49,7 @@ if(!$result){
 <body class="min-h-screen flex items-center justify-center animated-bg p-4">
 <div class="relative bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-2xl overflow-hidden max-w-4xl w-full">
     <div class="relative z-10 p-8">
-        <a href="add_products_form.php" class="inline-block px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105 hover:rotate-1">
+        <a href="pages/add_products_form.php" class="inline-block px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105 hover:rotate-1">
             Add new Product
         </a>
         <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">List Products</h2>
@@ -66,11 +73,11 @@ if(!$result){
                             <td class="py-4 px-4 border-b"><?php  echo htmlspecialchars($p['description'])?></td>
                             <td class="py-4 px-4 border-b"><?php  echo htmlspecialchars($p['price']) . " ден."?></td>
                             <td class="py-4 px-4 border-b">
-                                <form action="delete_product.php" method="post" style="display:inline;">
+                                <form action="handlers/delete_product.php" method="post" style="display:inline;">
                                      <input type="hidden" name="id" value="<?php echo $p['id']; ?>">
                                      <button type="submit" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105 hover:-rotate-1">Delete</button>
                                 </form>
-                                <form action="update_product_form.php" method="get" style="display:inline;">
+                                <form action="pages/update_product_form.php" method="get" style="display:inline;">
                                      <input type="hidden" name="id" value="<?php echo $p['id']; ?>">
                                      <button type="submit" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105 hover:-rotate-1">Update</button>
                                 </form>
@@ -84,6 +91,11 @@ if(!$result){
                     </tr>
                 <?php endif; ?>
             </table>
+            <a href="/handlers/auth/logout.php"
+               class="inline-block px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full shadow-md hover:from-pink-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105">
+                Log out !
+            </a>
+        </div>
         </div>
     </div>
     <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20 blur-2xl"></div>

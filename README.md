@@ -2,7 +2,8 @@
 
 <h2>Login page</h2>
 
-![image](https://github.com/user-attachments/assets/c4116afc-fdb6-4de0-bc99-ec89b94fd343)
+![image](https://github.com/user-attachments/assets/f312ac8b-f9c6-4402-9e38-f06e53a1d9bb)
+
 
 <h2>Index page</h2>
 

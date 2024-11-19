@@ -7,7 +7,8 @@
 
 <h2>Index page</h2>
 
-![image](https://github.com/user-attachments/assets/c751300a-02f4-47e3-a0c8-369e354bd164)
+![image](https://github.com/user-attachments/assets/6182af3c-75fd-4658-baa6-14b75d2515bf)
+
 
 
 <h2>Add new product page</h2>

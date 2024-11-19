@@ -1,13 +1,15 @@
 <?php
-session_start();
+
 
 include "database/db_connection.php";
-require "jwt_helper.php";
 
-if(!isset($_SESSION['jwt']) || !decodeJWT($_SESSION['jwt'])){
-    header('Location: /pages/auth/login_form.php');
-    exit;
-}
+//session_start();
+//require "jwt_helper.php";
+//
+//if(!isset($_SESSION['jwt']) || !decodeJWT($_SESSION['jwt'])){
+//    header('Location: /pages/auth/login_form.php');
+//    exit;
+//}
 
 $db = database_connect();
 

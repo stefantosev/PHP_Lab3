@@ -1,13 +1,13 @@
 <?php
 
-    session_start();
-
-    require "../jwt_helper.php";
-
-    if(!isset($_SESSION['jwt']) && !decodeJWT($_SESSION['jwt'])){
-        header('Location: auth/login_pages.php');
-        exit;
-    }
+//    session_start();
+//
+//    require "../jwt_helper.php";
+//
+//    if(!isset($_SESSION['jwt']) && !decodeJWT($_SESSION['jwt'])){
+//        header('Location: auth/login_pages.php');
+//        exit;
+//    }
 
     include '../database/db_connection.php';
 

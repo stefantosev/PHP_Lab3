@@ -1,14 +1,14 @@
 <?php
-session_start();
-
-require "../../jwt_helper.php";
-
-if(isset($_SESSION['jwt']) && decodeJWT($_SESSION['jwt'])){
-    header('Location: ../../index.php');
-    exit;
-}
-
-?>
+//session_start();
+//
+//require "../../jwt_helper.php";
+//
+//if(isset($_SESSION['jwt']) && decodeJWT($_SESSION['jwt'])){
+//    header('Location: ../../index.php');
+//    exit;
+//}
+//
+//?>
 
 
 <!DOCTYPE html>

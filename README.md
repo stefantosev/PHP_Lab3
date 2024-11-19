@@ -16,3 +16,10 @@
 ![image](https://github.com/user-attachments/assets/9301c7e7-a573-4298-b9eb-57558411e514)
 
 
+<h2>Requirements: </h2>
+  <li>firebase/php-jwt</li></li>
+  <li>vlucas/phpdotenv</li>
+  <li>Add .env file</li>
+  <li>Run the php generateKey file and add the JWT_SECRET in the .env file</li>
+
+

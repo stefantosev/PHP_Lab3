@@ -3,13 +3,13 @@
 
 include "database/db_connection.php";
 
-//session_start();
-//require "jwt_helper.php";
-//
-//if(!isset($_SESSION['jwt']) || !decodeJWT($_SESSION['jwt'])){
-//    header('Location: /pages/auth/login_form.php');
-//    exit;
-//}
+session_start();
+require "jwt_helper.php";
+
+if(!isset($_SESSION['jwt']) || !decodeJWT($_SESSION['jwt'])){
+    header('Location: /pages/auth/login_form.php');
+    exit;
+}
 
 $db = database_connect();
 
@@ -93,6 +93,7 @@ if(!$result){
                     </tr>
                 <?php endif; ?>
             </table>
+            <br/>
             <a href="/handlers/auth/logout.php"
                class="inline-block px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full shadow-md hover:from-pink-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all duration-300 ease-in-out transform hover:scale-105">
                 Log out !
